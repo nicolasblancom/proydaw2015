@@ -11,6 +11,7 @@
 		@include('templates.partials._navigation')
 
 		<div class="container">
+			@include('templates.partials._messages_flash')
 			@yield('content')
 		</div>
 

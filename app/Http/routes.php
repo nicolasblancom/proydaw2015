@@ -11,11 +11,7 @@
 |
 */
 
-// Calling home view
-Route::get('/',[
-	'uses' => '\Socialdaw\Http\Controllers\HomeController@index',
-	'as'   => 'home',
-]);
+//
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +25,14 @@ Route::get('/',[
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    // Calling home view
+    Route::get('/',[
+		'uses' => '\Socialdaw\Http\Controllers\HomeController@index',
+		'as'   => 'home',
+	]);
+
+    // Testing flash messages
+	Route::get('/alert', function(){
+		return redirect()->route('home')->with('info','Mesaje flasheado en sesión ok! :)');
+	});
 });
