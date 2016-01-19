@@ -3,7 +3,7 @@
 
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Socialdaw</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Socialdaw</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,7 @@
                     <li><a href="#">Actualizar perfil</a></li>
                     <li><a href="#">Salir</a></li>
                 <!-- @else -->
-                    <li><a href="#">Regístrate</a></li>
+                    <li><a href="{{ route('auth.registro') }}">Regístrate</a></li>
                     <li><a href="#">Entrar</a></li>
                 <!-- @endif -->
             </ul>

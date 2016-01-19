@@ -35,4 +35,18 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/alert', function(){
 		return redirect()->route('home')->with('info','Mesaje flasheado en sesión ok! :)');
 	});
+
+	/*
+	| Registro de usuarios
+	*/
+	// Calling registro view
+	Route::get('/registro',[
+		'uses' => '\Socialdaw\Http\Controllers\AuthController@getRegistro',
+		'as' => 'auth.registro',
+	]);
+
+	// Calling registro view
+	Route::post('/registro',[
+		'uses' => '\Socialdaw\Http\Controllers\AuthController@postRegistro',
+	]);
 });
