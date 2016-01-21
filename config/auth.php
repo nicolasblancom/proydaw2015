@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Socialdaw\User::class,
+            'model' => Socialdaw\Models\User::class,
         ],
 
         // 'users' => [

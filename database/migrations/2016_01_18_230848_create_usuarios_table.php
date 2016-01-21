@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('nombre')->nullable();
             $table->string('apellidos')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->string('recuerdame_token')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -49,4 +49,24 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/registro',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@postRegistro',
 	]);
+
+	/*
+	| Login de usuarios
+	*/
+	// Calling login view
+	Route::get('/login',[
+		'uses' => '\Socialdaw\Http\Controllers\AuthController@getLogin',
+		'as' => 'auth.login',
+	]);
+
+	// Calling registro view
+	Route::post('/login',[
+		'uses' => '\Socialdaw\Http\Controllers\AuthController@postLogin',
+	]);
+
+	// Calling login view
+	Route::get('/logout',[
+		'uses' => '\Socialdaw\Http\Controllers\AuthController@getLogout',
+		'as' => 'auth.logout',
+	]);
 });

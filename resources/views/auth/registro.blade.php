@@ -1,6 +1,7 @@
 @extends('templates.default')
 
 @section('content')
+<h3>Registro</h3>
 <div class="row">
 	<div class="cl-lg-6">
 		<form action="{{ route('auth.registro') }}" class="control-label" role="form" method="post">
