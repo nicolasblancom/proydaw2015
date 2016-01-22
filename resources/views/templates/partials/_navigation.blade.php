@@ -15,7 +15,7 @@
                     <li><a href="#">Amigos</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-left" role="search" action="#">
+                <form class="navbar-form navbar-left" role="search" action="{{ route('search.resultados') }}">
                     <div class="form-group">
                         <input type="text" name="query" class="form-control" placeholder="Busca amigos">
                     </div>

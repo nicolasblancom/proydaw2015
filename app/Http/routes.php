@@ -73,4 +73,13 @@ Route::group(['middleware' => ['web']], function () {
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@getLogout',
 		'as' => 'auth.logout',
 	]);
+
+	/*
+	| Busqueda de usuarios
+	*/
+	// Calling search view
+	Route::get('/busqueda', [
+		'uses' => '\Socialdaw\Http\Controllers\SearchController@getResultados',
+		'as' => 'search.resultados',
+	]);
 });
