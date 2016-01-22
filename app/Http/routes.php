@@ -43,11 +43,13 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/registro',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@getRegistro',
 		'as' => 'auth.registro',
+		'middleware' => 'guest',
 	]);
 
 	// Calling registro view
 	Route::post('/registro',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@postRegistro',
+		'middleware' => 'guest',
 	]);
 
 	/*
@@ -57,14 +59,16 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/login',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@getLogin',
 		'as' => 'auth.login',
+		'middleware' => 'guest',
 	]);
 
 	// Calling registro view
 	Route::post('/login',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@postLogin',
+		'middleware' => 'guest',
 	]);
 
-	// Calling login view
+	// Calling logout view
 	Route::get('/logout',[
 		'uses' => '\Socialdaw\Http\Controllers\AuthController@getLogout',
 		'as' => 'auth.logout',
