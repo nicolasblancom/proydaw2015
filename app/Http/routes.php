@@ -82,4 +82,13 @@ Route::group(['middleware' => ['web']], function () {
 		'uses' => '\Socialdaw\Http\Controllers\SearchController@getResultados',
 		'as' => 'search.resultados',
 	]);
+
+	/*
+	| Perfil de usuario
+	*/
+	// Calling perfil view
+	Route::get('/usuario/{username}', [
+		'uses' => '\Socialdaw\Http\Controllers\ProfileController@getPerfil',
+		'as' => 'profile.index',
+	]);
 });

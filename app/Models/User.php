@@ -69,4 +69,15 @@ class User extends Authenticatable
     {
         return $this->nombre ?: $this->username;
     }
+
+    /**
+     * Obtener la url de la imagen de gravatar desde el email del usuario.
+     *
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        $hash = md5($this->email);
+        return "http://www.gravatar.com/avatar/$hash?d=mm&s=45";
+    }
 }
