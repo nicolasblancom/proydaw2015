@@ -2,6 +2,7 @@
 
 namespace Socialdaw\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use Socialdaw\Models\User;
 
@@ -22,5 +23,38 @@ class ProfileController extends Controller
 
     	return view('profile.index')
     		->with('user', $usuario);
+    }
+
+    /**
+     * Muestra la pagina de edicion de datos de usuario.
+     *
+     * @return view
+     */
+    public function getEdit(){
+        return view('profile.edit');
+    }
+
+    public function postEdit(Request $request){
+        $this->validate($request, [
+            'nombre' => [
+                'max:50',
+                'regex:/^[\pL\s]+$/u',
+            ],
+            'apellidos' => [
+                'max:50',
+                'regex:/^[\pL\s]+$/u',
+            ],
+            'ubicacion' => 'max:30',
+        ]);
+
+        Auth::user()->update([
+            'nombre' => $request->input('nombre'),
+            'apellidos' => $request->input('apellidos'),
+            'ubicacion' => $request->input('ubicacion'),
+        ]);
+
+        return redirect()
+            ->route('profile.edit')
+            ->with('info', 'Tu perfil ha sido actualizado.');
     }
 }

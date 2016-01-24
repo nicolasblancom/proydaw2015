@@ -30,7 +30,7 @@
                             {{ Auth::user()->getNombreCompletoOUsername() }}
                         </a>
                     </li>
-                    <li><a href="#">Actualizar perfil</a></li>
+                    <li><a href="{{ route('profile.edit') }}">Actualizar perfil</a></li>
                     <li><a href="{{ route('auth.logout') }}">Salir</a></li>
                 @else
                     <li><a href="{{ route('auth.registro') }}">Regístrate</a></li>

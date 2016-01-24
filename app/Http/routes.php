@@ -86,9 +86,22 @@ Route::group(['middleware' => ['web']], function () {
 	/*
 	| Perfil de usuario
 	*/
+	// Calling editar perfil view
+	Route::get('/usuario/edit', [
+		'uses' => '\Socialdaw\Http\Controllers\ProfileController@getEdit',
+		'as' => 'profile.edit',
+		'middleware' => ['auth'],
+	]);
+
 	// Calling perfil view
 	Route::get('/usuario/{username}', [
 		'uses' => '\Socialdaw\Http\Controllers\ProfileController@getPerfil',
 		'as' => 'profile.index',
+	]);
+
+	// Enviar datos de usuario editado
+	Route::post('/usuario/edit', [
+		'uses' => '\Socialdaw\Http\Controllers\ProfileController@postEdit',
+		'middleware' => ['auth'],
 	]);
 });
