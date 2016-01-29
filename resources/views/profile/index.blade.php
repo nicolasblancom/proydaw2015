@@ -8,7 +8,14 @@
 			<hr>
 		</div>
 		<div class="col-lg-4 col-lg-offset-3">
-			<!-- Amigos, peticiones de amistad -->
+			<h4>Amigos de {{ $user->getNombreOUsername() }}</h4>
+			@if(!$user->amigos()->count())
+				<p>{{ $user->getNombreOUsername() }} no tiene amigos agregados aún...</p>
+			@else
+				@foreach($user->amigos() as $user)
+					@include('user.partials._userblock')
+				@endforeach
+			@endif
 		</div>
 	</div>
 @stop

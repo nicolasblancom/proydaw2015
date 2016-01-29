@@ -104,4 +104,14 @@ Route::group(['middleware' => ['web']], function () {
 		'uses' => '\Socialdaw\Http\Controllers\ProfileController@postEdit',
 		'middleware' => ['auth'],
 	]);
+
+	/*
+	| Amigos
+	*/
+	// Calling amigos index view
+	Route::get('/amigos', [
+		'uses' => '\Socialdaw\Http\Controllers\FriendController@getIndex',
+		'as' => 'friends.index',
+		'middleware' => ['auth'],
+	]);
 });

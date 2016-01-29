@@ -80,4 +80,36 @@ class User extends Authenticatable
         $hash = md5($this->email);
         return "http://www.gravatar.com/avatar/$hash?d=mm&s=45";
     }
+
+    /**
+     * Relacion relfexiva: 'amigos del usuario'.
+     *
+     * @return Illuminate/Database/Eloquent/Relations/BelongsToMany
+     */
+    public function amigosMios()
+    {
+        return $this->belongsToMany('Socialdaw\Models\User', 'amigos', 'usuario_id', 'amigo_id');
+    }
+
+    /**
+     * Relacion reflexiva: 'usuario es amigo de'.
+     *
+     * @return Illuminate/Database/Eloquent/Relations/BelongsToMany
+     */
+    public function amigoDe()
+    {
+        return $this->belongsToMany('Socialdaw\Models\User', 'amigos', 'amigo_id', 'usuario_id');
+    }
+
+    /**
+     * Obtener los amigos del usuario.
+     * Bidireccional ('u1 amigo de u2' y 'u2 amigo de u1'), representado
+     * mediante la solicitud de amistad aceptada por ambas partes.
+     *
+     * @return Illuminate\Support\Collection
+     */
+    public function amigos()
+    {
+        return $this->amigosMios()->wherePivot('aceptado', true)->get()->merge($this->amigoDe()->wherePivot('aceptado', true)->get());
+    }
 }
