@@ -122,4 +122,69 @@ class User extends Authenticatable
     {
         return $this->amigosMios()->wherePivot('aceptado', false)->get();
     }
+
+    /**
+     * Obtener las solicitudes de amistad pendientes del usuario.
+     *
+     * @return [type] [description]
+     */
+    public function amigosSolicitudesPendientes()
+    {
+        return $this->amigoDe()->wherePivot('aceptado', false)->get();
+    }
+
+    /**
+     * Comprobar si el usuario tiene solicitud de amistad pendiente de
+     * aceptar por un usuario.
+     *
+     * @param  User   $user Usuario del que proviene la posible solicitud de amistad.
+     * @return bool
+     */
+    public function tieneAmigoSolicitudPendiente(User $user)
+    {
+        return (bool) $this->amigosSolicitudesPendientes()
+            ->where('id', $user->id)->count();
+    }
+
+    /**
+     * Comprobar si el usuario tiene solicitud de amistad recibida desde otro usuario,
+     * aun sin aceptar.
+     *
+     * @param  User   $user Usuario del que proviene la posible solicitud de amistad.
+     * @return bool
+     */
+    public function tieneAmigoSolicitudRecibida(User $user)
+    {
+        return (bool) $this->amigosSolicitudes()->where('id', $user->id)->count();
+    }
+
+    /**
+     * Agregar un usuario como amigo.
+     *
+     * @param  User   $user Usuario al que queremos agregar como amigo.
+     * @return [type]       [description]
+     */
+    public function agregarAmigo(User $user)
+    {
+        return $this->amigoDe()->attach($user->id);
+    }
+
+    /**
+     * Aceptar una solicitud de amistad de un usuario.
+     *
+     * @param  User   $user Usuario del cual queremos aceptar la solicitud de amistad.
+     * @return [type]       [description]
+     */
+    public function aceptarAmigoSolicitud(User $user)
+    {
+        $this->amigosSolicitudes()->where('id', $user->id)->get()
+            ->pivot->update([
+                'aceptado' => true,
+            ]);
+    }
+
+    public function esAmigoDe(User $user)
+    {
+        return (bool) $this->amigos()->where('id', $user->id)->count();
+    }
 }
