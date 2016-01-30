@@ -112,4 +112,14 @@ class User extends Authenticatable
     {
         return $this->amigosMios()->wherePivot('aceptado', true)->get()->merge($this->amigoDe()->wherePivot('aceptado', true)->get());
     }
+
+    /**
+     * Obtener las solicitudes de amistad del usuario. Son 'amistades sin aceptar'.
+     *
+     * @return [type] [description]
+     */
+    public function amigosSolicitudes()
+    {
+        return $this->amigosMios()->wherePivot('aceptado', false)->get();
+    }
 }
