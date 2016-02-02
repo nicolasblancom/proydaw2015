@@ -19,7 +19,7 @@
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
 			@else
 			<!-- Boton para solicitar amistad -->
-				<a href="#" class="btn btn-primary">Solicitar amistad</a>
+				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Solicitar amistad</a>
 			@endif
 
 			<h4>Amigos de {{ $user->getNombreOUsername() }}</h4>

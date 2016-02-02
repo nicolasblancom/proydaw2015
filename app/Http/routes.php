@@ -114,4 +114,11 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'friends.index',
 		'middleware' => ['auth'],
 	]);
+
+	// Agregar a un usuario como amigo
+	Route::get('/amigos/agregar/{username}', [
+		'uses' => '\Socialdaw\Http\Controllers\FriendController@getAdd',
+		'as' => 'friends.add',
+		'middleware' => ['auth'],
+	]);
 });
