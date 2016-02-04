@@ -70,4 +70,36 @@ class FriendController extends Controller
             ->route('profile.index', ['username' => $user->username])
             ->with('info', $info);
     }
+
+    public function getAccept($username)
+    {
+        $user = User::where('username', $username)->first();
+
+        // Comprobar si el usuario existe
+        // REFACTOR: hacer metodo protected
+        if (!$user) {
+            $info = "El usuario $username no existe...";
+
+            return redirect()
+                ->route('home')
+                ->with('info', $info);
+        }
+
+        // Comprobar que hemos recibido realmente una solicitud de ese usuario
+        if (!Auth::user()->tieneAmigoSolicitudRecibida($user)) {
+            $info = "No tenías ninguna solicitud de amistad de $username...";
+
+            return redirect()
+                ->route('home')
+                ->with('info', $info);
+        }
+
+        Auth::user()->aceptarAmigoSolicitud($user);
+
+        $info = "Solicitud de amistad de $username aceptada";
+
+        return redirect()
+            ->route('profile.index', ['username' => $username])
+            ->with('info', $info);
+    }
 }

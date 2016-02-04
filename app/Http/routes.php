@@ -121,4 +121,11 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'friends.add',
 		'middleware' => ['auth'],
 	]);
+
+	// Aceptar una solicitud de amistad pendiente
+	Route::get('/amigos/aceptar/{username}', [
+		'uses' => '\Socialdaw\Http\Controllers\FriendController@getAccept',
+		'as' => 'friends.accept',
+		'middleware' => ['auth'],
+	]);
 });

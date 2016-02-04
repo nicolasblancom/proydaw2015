@@ -13,7 +13,7 @@
 				<p>{{ $user->getNombreOUsername() }} aún no ha aceptado tu solicitud...</p>
 			@elseif(Auth::user()->tieneAmigoSolicitudRecibida($user))
 			<!-- Boton para aceptar solicitudes pendientes -->
-				<a href="#" class="btn btn-primary">Aceptar amistad</a>
+				<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="btn btn-primary">Aceptar amistad</a>
 			@elseif(Auth::user()->esAmigoDe($user))
 			<!-- Mensaje de reacion de amistad -->
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>

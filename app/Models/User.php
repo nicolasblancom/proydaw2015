@@ -177,7 +177,7 @@ class User extends Authenticatable
      */
     public function aceptarAmigoSolicitud(User $user)
     {
-        $this->amigosSolicitudes()->where('id', $user->id)->get()
+        $this->amigosSolicitudes()->where('id', $user->id)->first()
             ->pivot->update([
                 'aceptado' => true,
             ]);
