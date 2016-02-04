@@ -41,6 +41,11 @@ class FriendController extends Controller
                 ->with('info', $info);
         }
 
+        // Comprobar que no estemos agregandonos a nosotros mismos
+        if (Auth::user()->id === $user->id) {
+            return redirect()->route('home');
+        }
+
         // Comprobar si ya hay una solicitud de amistad pendiente de aceptar tanto
         // del usuario autenticado hacia el usuario a agregar, como al reves
         if( Auth::user()->tieneAmigoSolicitudPendiente($user) ||

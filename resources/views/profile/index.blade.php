@@ -17,7 +17,7 @@
 			@elseif(Auth::user()->esAmigoDe($user))
 			<!-- Mensaje de reacion de amistad -->
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
-			@else
+			@elseif(Auth::user()->id !== $user->id)
 			<!-- Boton para solicitar amistad -->
 				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Solicitar amistad</a>
 			@endif
