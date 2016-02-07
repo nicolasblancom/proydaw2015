@@ -128,4 +128,14 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'friends.accept',
 		'middleware' => ['auth'],
 	]);
+
+	/*
+	| Estados
+	*/
+	// Actualizar/Publicar un nuevo estado
+	Route::post('estado', [
+		'uses' => '\Socialdaw\Http\Controllers\StatusController@postEstado',
+		'as' => 'status.post',
+		'middleware' => ['auth'],
+	]);
 });
