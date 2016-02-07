@@ -82,6 +82,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Relacion uno a muchos: 'usuario tiene muchos estados'.
+     *
+     * @return Illuminate/Database/Eloquent/Relations/HasMany
+     */
+    public function estados()
+    {
+        return $this->hasMany('Socialdaw\Models\Status', 'usuario_id');
+    }
+
+    /**
      * Relacion relfexiva: 'amigos del usuario'.
      *
      * @return Illuminate/Database/Eloquent/Relations/BelongsToMany
