@@ -31,4 +31,25 @@ class Status extends Model
 	{
 		return $this->belongsTo('Socialdaw\Models\User', 'usuario_id');
 	}
+
+	/**
+	 * Relacion uno a muchos: 'un estado tiene muchas respuestas'.
+	 *
+	 * @return HasMany
+	 */
+	public function respuestas()
+	{
+		return $this->hasMany('Socialdaw\Models\Status', 'padre_id');
+	}
+
+	/**
+	 * Scope para filtrar solo los estados que no sean una respuesta a otro estado.
+	 *
+	 * @param  [type] $query [description]
+	 * @return [type]        [description]
+	 */
+	public function scopeNoRespuesta($query)
+	{
+		return $query->whereNull('padre_id');
+	}
 }

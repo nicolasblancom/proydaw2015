@@ -60,10 +60,14 @@
 								</div>
 							</div>-->
 
-							<form action="#" role="form" method="post">
-								<div class="form-group">
-									<textarea name="respuesta-1" rows="2" class="form-control" placeholder="Responder a este estado"></textarea>
+							<form action="{{ route('status.respuesta', ['estadoId' => $estado->id]) }}" role="form" method="post">
+								<div class="form-group{{ $errors->has("respuesta-{$estado->id}") ? ' has-error' : '' }}">
+									<textarea name="respuesta-{{ $estado->id }}" rows="2" class="form-control" placeholder="Responder a este estado"></textarea>
+									@if($errors->has("respuesta-{$estado->id}"))
+										<span class="help-block">{{ $errors->first("respuesta-{$estado->id}") }}</span>
+									@endif
 								</div>
+								<input type="hidden" name="_token" value="{{ Session::token() }}">
 								<input type="submit" value="Responder" class="btn btn-default btn-sm">
 							</form>
 						</div>

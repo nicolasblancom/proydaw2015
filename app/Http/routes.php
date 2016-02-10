@@ -133,9 +133,16 @@ Route::group(['middleware' => ['web']], function () {
 	| Estados
 	*/
 	// Actualizar/Publicar un nuevo estado
-	Route::post('estado', [
+	Route::post('/estado', [
 		'uses' => '\Socialdaw\Http\Controllers\StatusController@postEstado',
 		'as' => 'status.post',
+		'middleware' => ['auth'],
+	]);
+
+	// Responder a un estado
+	Route::post('/estado/{estadoId}/respuesta', [
+		'uses' => '\Socialdaw\Http\Controllers\StatusController@postRespuesta',
+		'as' => 'status.respuesta',
 		'middleware' => ['auth'],
 	]);
 });

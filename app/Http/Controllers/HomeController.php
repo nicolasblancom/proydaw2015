@@ -17,7 +17,7 @@ class HomeController extends Controller
 		// Si estoy logeado, muestro el timeline o muro
 		if (Auth::check()) {
 			// Recojo mis estados y los de mis amigos, ordeno y pagino
-			$estados = Status::where(function($query){
+			$estados = Status::noRespuesta()->where(function($query){
 				return $query
 					->where('usuario_id', Auth::user()->id)
 					->orWhereIn('usuario_id', Auth::user()->amigos()->lists('id'));
