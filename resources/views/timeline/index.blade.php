@@ -45,20 +45,29 @@
 								<li>25 likes</li>
 							</ul>
 
-							<!--<div class="media">
-								<a href="#" class="pull-left">
-									<img src="" alt="" class="media-object">
+							@foreach($estado->respuestas as $respuesta)
+							<div class="media">
+								<a href="{{ route('profile.index', ['username' => $respuesta->usuario->username]) }}" class="pull-left">
+									<img
+										src="{{ $respuesta->usuario->getAvatarUrl() }}"
+										alt="{{ $respuesta->usuario->getNombreCompletoOUsername() }}"
+										class="media-object">
 								</a>
 								<div class="media-body">
-									<h5 class="media-heading"><a href="">Juan</a></h5>
-									<p>Sí que es verdad!</p>
+									<h5 class="media-heading">
+										<a href="{{ route('profile.index', ['username' => $respuesta->usuario->username]) }}">
+											{{ $respuesta->usuario->getNombreCompletoOUsername() }}
+										</a>
+									</h5>
+									<p>{{ $respuesta->body }}</p>
 									<ul class="list-inline">
-										<li>Hace 30 minutos</li>
+										<li>{{ $respuesta->created_at->diffForHumans() }}</li>
 										<li><a href="#">Like</a></li>
 										<li>25 likes</li>
 									</ul>
 								</div>
-							</div>-->
+							</div>
+							@endforeach
 
 							<form action="{{ route('status.respuesta', ['estadoId' => $estado->id]) }}" role="form" method="post">
 								<div class="form-group{{ $errors->has("respuesta-{$estado->id}") ? ' has-error' : '' }}">
