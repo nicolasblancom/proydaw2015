@@ -21,8 +21,14 @@ class ProfileController extends Controller
     		abort(404);
     	}
 
+        // Obtener estados del propio usuario autenticado
+        $estados = $usuario->estados()->noRespuesta()->get();
+
+        // authUsuarioEsAmigo se usara para mostrar el form de respuesta o no
     	return view('profile.index')
-    		->with('user', $usuario);
+            ->with('user', $usuario)
+    		->with('estados', $estados)
+            ->with('authUsuarioEsAmigo', Auth::user()->esAmigoDe($usuario));
     }
 
     /**

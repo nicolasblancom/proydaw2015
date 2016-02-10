@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-5">
-			<!-- Timeline -->
+			<!-- Timeline: sacar en partial -->
 			@if(!$estados->count())
 				<p>No hay nada en tu muro aun...</p>
 			@else
