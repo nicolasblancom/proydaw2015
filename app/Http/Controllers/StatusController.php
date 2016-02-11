@@ -71,4 +71,35 @@ class StatusController extends Controller
 		return redirect()->back();
 
 	}
+
+	/**
+	 * Dar me gusta a un estado. Almacenar me gusta en bd.
+	 *
+	 * @param  int $estadoId
+	 * @return redirect
+	 */
+	public function getLike($estadoId)
+	{
+		$estado = Status::find($estadoId);
+
+		if (!$estado) {
+			return redirect()->$route('home');
+		}
+
+		// Si no son amigos (el usuario y el dueño del estado con el like)
+		if (!Auth::user()->esAmigoDe($estado->usuario)) {
+			return redirect()->$route('home');
+		}
+
+		// Si ya le dio me gusta a ese estado
+		if (Auth::user()->dioLikeEstado($estado)) {
+			return redirect()->back();
+		}
+
+		// Creo el like nuevo (vacio porque es polimorfica) y guardo en bd
+		$like = $estado->likes()->create([]);
+		Auth::user()->likes()->save($like);
+
+		return redirect()->back();
+	}
 }

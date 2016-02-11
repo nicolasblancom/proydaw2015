@@ -3,6 +3,7 @@
 namespace Socialdaw\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Socialdaw\Models\Status;
 
 class User extends Authenticatable
 {
@@ -89,6 +90,11 @@ class User extends Authenticatable
     public function estados()
     {
         return $this->hasMany('Socialdaw\Models\Status', 'usuario_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('Socialdaw\Models\Like', 'usuario_id');
     }
 
     /**
@@ -196,5 +202,20 @@ class User extends Authenticatable
     public function esAmigoDe(User $user)
     {
         return (bool) $this->amigos()->where('id', $user->id)->count();
+    }
+
+    /**
+     * Saber si un usuario ha dado me gusta a una estado.
+     *
+     * @param  Status $estado
+     * @return bool
+     */
+    public function dioLikeEstado(Status $estado)
+    {
+        return (bool) $estado->likes
+            ->where('gustable_id', $estado->id)
+            ->where('gustable_type', get_class($estado))
+            ->where('usuario_id', $this->id)
+            ->count();
     }
 }

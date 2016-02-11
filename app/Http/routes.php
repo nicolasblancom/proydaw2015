@@ -145,4 +145,11 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'status.respuesta',
 		'middleware' => ['auth'],
 	]);
+
+	// Dar like a un estado
+	Route::get('/estado/{estadoId}/like', [
+		'uses' => '\Socialdaw\Http\Controllers\StatusController@getLike',
+		'as' => 'status.like',
+		'middleware' => ['auth'],
+	]);
 });
