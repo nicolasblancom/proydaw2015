@@ -18,7 +18,7 @@ class CreateGustableTable extends Migration
             $table->increments('id');
             $table->integer('usuario_id');
             $table->integer('gustable_id');
-            $table->string('gustable_tipo');
+            $table->string('gustable_type');
             $table->timestamps();
 
         });
