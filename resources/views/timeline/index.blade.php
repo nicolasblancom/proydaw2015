@@ -41,8 +41,10 @@
 							<p>{{ $estado->body }}</p>
 							<ul class="list-inline">
 								<li>{{ $estado->created_at->diffForHumans() }}</li>
-								<li><a href="#">Like</a></li>
-								<li>25 likes</li>
+								@if($estado->usuario->id !== Auth::user()->id)
+									<li><a href="{{ route('status.like', ['estadoId' => $estado->id]) }}">Like</a></li>
+									<li>25 likes</li>
+								@endif
 							</ul>
 
 							@foreach($estado->respuestas as $respuesta)
@@ -62,8 +64,10 @@
 									<p>{{ $respuesta->body }}</p>
 									<ul class="list-inline">
 										<li>{{ $respuesta->created_at->diffForHumans() }}</li>
-										<li><a href="#">Like</a></li>
-										<li>25 likes</li>
+										@if($respuesta->usuario->id !== Auth::user()->id)
+											<li><a href="{{ route('status.like', ['estadoId' => $respuesta->id]) }}">Like</a></li>
+											<li>25 likes</li>
+										@endif
 									</ul>
 								</div>
 							</div>
