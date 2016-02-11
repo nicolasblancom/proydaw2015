@@ -43,6 +43,16 @@ class Status extends Model
 	}
 
 	/**
+	 * Relacion polimorfica una a muchos: 'un estado tiene muchos likes'.
+	 *
+	 * @return Illuminate\Database\Eloquent\Relations\MorphTo
+	 */
+	public function likes()
+	{
+		return $this->morphMany('Socialdaw\Models\Like', 'gustable');
+	}
+
+	/**
 	 * Scope para filtrar solo los estados que no sean una respuesta a otro estado.
 	 *
 	 * @param  [type] $query [description]
