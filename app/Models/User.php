@@ -212,10 +212,6 @@ class User extends Authenticatable
      */
     public function dioLikeEstado(Status $estado)
     {
-        return (bool) $estado->likes
-            ->where('gustable_id', $estado->id)
-            ->where('gustable_type', get_class($estado))
-            ->where('usuario_id', $this->id)
-            ->count();
+        return (bool) $estado->likes->where('usuario_id', $this->id)->count();
     }
 }
