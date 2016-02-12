@@ -58,7 +58,7 @@
 									<ul class="list-inline">
 										<li>{{ $respuesta->created_at->diffForHumans() }}</li>
 										@if($respuesta->usuario->id !== Auth::user()->id)
-											@if(Auth::user()->dioLikeEstado($estado))
+											@if(Auth::user()->dioLikeEstado($respuesta))
 												<li><a href="#">Ya no me gusta</a></li>
 											@else
 												<li><a href="{{ route('status.like', ['estadoId' => $respuesta->id]) }}">Like</a></li>
