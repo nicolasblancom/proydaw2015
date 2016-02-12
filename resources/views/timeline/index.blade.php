@@ -42,9 +42,13 @@
 							<ul class="list-inline">
 								<li>{{ $estado->created_at->diffForHumans() }}</li>
 								@if($estado->usuario->id !== Auth::user()->id)
-									<li><a href="{{ route('status.like', ['estadoId' => $estado->id]) }}">Like</a></li>
-									<li>25 likes</li>
+									@if(Auth::user()->dioLikeEstado($estado))
+										<li><a href="#">Ya no me gusta</a></li>
+									@else
+										<li><a href="{{ route('status.like', ['estadoId' => $estado->id]) }}">Like</a></li>
+									@endif
 								@endif
+								<li>{{ $estado->likes->count() }} {{ str_plural('like', $estado->likes->count()) }}</li>
 							</ul>
 
 							@foreach($estado->respuestas as $respuesta)
@@ -65,9 +69,14 @@
 									<ul class="list-inline">
 										<li>{{ $respuesta->created_at->diffForHumans() }}</li>
 										@if($respuesta->usuario->id !== Auth::user()->id)
-											<li><a href="{{ route('status.like', ['estadoId' => $respuesta->id]) }}">Like</a></li>
-											<li>25 likes</li>
+											@if(Auth::user()->dioLikeEstado($respuesta))
+												<li><a href="#">Ya no me gusta</a></li>
+											@else
+												<li><a href="{{ route('status.like', ['estadoId' => $respuesta->id]) }}">Like</a></li>
+											@endif
+
 										@endif
+										<li>{{ $respuesta->likes->count() }} {{ str_plural('like', $respuesta->likes->count()) }}</li>
 									</ul>
 								</div>
 							</div>
