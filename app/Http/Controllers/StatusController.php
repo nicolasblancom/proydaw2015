@@ -83,12 +83,12 @@ class StatusController extends Controller
 		$estado = Status::find($estadoId);
 
 		if (!$estado) {
-			return redirect()->$route('home');
+			return redirect()->route('home');
 		}
 
 		// Si no son amigos (el usuario y el dueño del estado con el like)
 		if (!Auth::user()->esAmigoDe($estado->usuario)) {
-			return redirect()->$route('home');
+			return redirect()->route('home');
 		}
 
 		// Si ya le dio me gusta a ese estado
