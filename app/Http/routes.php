@@ -129,6 +129,13 @@ Route::group(['middleware' => ['web']], function () {
 		'middleware' => ['auth'],
 	]);
 
+	// Eliminar la relacion de amistad con un usuario
+	Route::post('/amigos/eliminar/{username}', [
+		'uses' => '\Socialdaw\Http\Controllers\FriendController@postDelete',
+		'as' => 'friends.delete',
+		'middleware' => ['auth'],
+	]);
+
 	/*
 	| Estados
 	*/

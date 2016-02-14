@@ -186,6 +186,21 @@ class User extends Authenticatable
     }
 
     /**
+     * Eliminar la amistad de un usuario.
+     *
+     * @param  User   $user Usuario al que queremos eliminar como amigo.
+     * @return int
+     */
+    public function eliminarAmigo(User $user)
+    {
+        // Si el usuario que elimina es el que recibio la solicitud de amistad
+        $this->amigosMios()->detach($user->id);
+
+        // Si el usuario que elimina es el que envio la solicitud de amistad
+        $this->amigoDe()->detach($user->id);
+    }
+
+    /**
      * Aceptar una solicitud de amistad de un usuario.
      *
      * @param  User   $user Usuario del cual queremos aceptar la solicitud de amistad.

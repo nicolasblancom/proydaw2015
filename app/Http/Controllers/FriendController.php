@@ -107,4 +107,26 @@ class FriendController extends Controller
             ->route('profile.index', ['username' => $username])
             ->with('info', $info);
     }
+
+    /**
+     * Eliminar la relacion de amistad con un usuario.
+     *
+     * @param  string $username
+     * @return redirect
+     */
+    public function postDelete($username)
+    {
+        $user = User::where('username', $username)->first();
+
+        // Si no hay amistad entre los usuarios
+        if (!Auth::user()->esAmigoDe($user)) {
+            return redirect()->back();
+        }
+
+        // Eliminar la amistad
+        Auth::user()->eliminarAmigo($user);
+
+        return redirect()->back()
+            ->with('info', 'Amistad eliminada.');
+    }
 }

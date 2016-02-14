@@ -95,8 +95,14 @@
 			<!-- Boton para aceptar solicitudes pendientes -->
 				<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="btn btn-primary">Aceptar amistad</a>
 			@elseif(Auth::user()->esAmigoDe($user))
-			<!-- Mensaje de reacion de amistad -->
+			<!-- Mensaje de relacion de amistad y boton de eliminar amistad -->
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
+
+				<form action="{{ route('friends.delete', ['username' => $user->username]) }}" method="POST">
+					<input type="submit" value="Eliminar amistad" class="btn btn-primary">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				</form>
+
 			@elseif(Auth::user()->id !== $user->id)
 			<!-- Boton para solicitar amistad -->
 				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Solicitar amistad</a>
