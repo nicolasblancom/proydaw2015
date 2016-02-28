@@ -14,10 +14,13 @@ class CreateEstadosTable extends Migration
     {
         Schema::create('estados', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('usuario_id');
-            $table->integer('padre_id')->nullable();
+            $table->integer('usuario_id')->unsigned();
+            $table->integer('padre_id')->nullable()->unsigned();
             $table->text('body');
             $table->timestamps();
+
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('padre_id')->references('id')->on('estados')->onDelete('cascade');
         });
     }
 

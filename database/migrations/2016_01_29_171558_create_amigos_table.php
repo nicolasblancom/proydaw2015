@@ -14,10 +14,13 @@ class CreateAmigosTable extends Migration
     {
         Schema::create('amigos', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('usuario_id');
-            $table->integer('amigo_id');
+            $table->integer('usuario_id')->unsigned();
+            $table->integer('amigo_id')->unsigned();
             $table->boolean('aceptado');
             $table->timestamps();
+
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('amigo_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
 
