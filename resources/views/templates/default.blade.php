@@ -7,8 +7,8 @@
 
 		<title>Socialdaw</title>
 
-		<link rel="stylesheet" href="{{ elixir('output/css/all.css') }}">
-		<script src="{{ elixir('output/js/all.js') }}"></script>
+		<link rel="stylesheet" href="/output/css/all.css">
+		<script src="/output/js/all.js"></script>
 	</head>
 	<body>
 

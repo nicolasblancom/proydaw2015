@@ -35,9 +35,9 @@ elixir(function(mix) {
     	'functions.js'
     ], 'public/output/js/all.js');
 
-    mix.version([
+    /*mix.version([
     	'output/css/all.css',
     	'output/js/all.js',
-    ]);
+    ]);*/
 
 });
