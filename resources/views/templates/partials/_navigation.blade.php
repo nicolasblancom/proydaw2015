@@ -3,11 +3,17 @@
 
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Abrir navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="{{ route('home') }}">Socialdaw</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse">
 
             @if (Auth::check())
                 <ul class="nav navbar-nav">
@@ -25,13 +31,19 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                    <li>
-                        <a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">
-                            {{ Auth::user()->getNombreCompletoOUsername() }}
-                        </a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">
+                                    {{ Auth::user()->getNombreCompletoOUsername() }}
+                                </a>
+                            </li>
+                            <li><a href="{{ route('profile.edit') }}">Actualizar perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('auth.logout') }}">Salir</a></li>
+                        </ul>
                     </li>
-                    <li><a href="{{ route('profile.edit') }}">Actualizar perfil</a></li>
-                    <li><a href="{{ route('auth.logout') }}">Salir</a></li>
                 @else
                     <li><a href="{{ route('auth.registro') }}">Regístrate</a></li>
                     <li><a href="{{ route('auth.login') }}">Entrar</a></li>
