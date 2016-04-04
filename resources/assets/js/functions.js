@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 
-  // Get started!
+  // Flash messages fade out
+  $('.alert').not('.alert-important').delay(3000).slideUp(300);
 
 });

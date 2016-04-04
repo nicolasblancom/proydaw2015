@@ -73,7 +73,8 @@ class FriendController extends Controller
 
         return redirect()
             ->route('profile.index', ['username' => $user->username])
-            ->with('info', $info);
+            ->with('info', $info)
+            ->with('info_important', true);
     }
 
     public function getAccept($username)
@@ -127,6 +128,7 @@ class FriendController extends Controller
         Auth::user()->eliminarAmigo($user);
 
         return redirect()->back()
-            ->with('info', 'Amistad eliminada.');
+            ->with('info', 'Amistad eliminada.')
+            ->with('info_important', true);
     }
 }

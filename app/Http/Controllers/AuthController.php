@@ -41,7 +41,8 @@ class AuthController extends Controller
 		// Devolver la vista
 		return redirect()
 			->route('home')
-			->with('info', 'Has creado tu cuenta correctamente! Ya puedes iniciar sesión.');
+			->with('info', 'Has creado tu cuenta correctamente! Ya puedes iniciar sesión.')
+			->with('info_important', true);
 	}
 
 	/**
@@ -65,7 +66,9 @@ class AuthController extends Controller
 			$request->only(['email', 'password']),
 			$request->has('recuerdame')) )
 		{
-			return redirect()->back()->with('info', 'Usuario o contraseña incorrectos. No se ha podido iniciar sesión.');
+			return redirect()->back()
+				->with('info', 'Usuario o contraseña incorrectos. No se ha podido iniciar sesión.')
+				->with('info_important', true);
 		}
 
 		return redirect()->route('home')->with('info', 'Usuario y contraseña correctos. Estás dentro de tu cuenta personal.');

@@ -61,6 +61,7 @@ class ProfileController extends Controller
 
         return redirect()
             ->route('profile.edit')
-            ->with('info', 'Tu perfil ha sido actualizado.');
+            ->with('info', 'Tu perfil ha sido actualizado.')
+            ->with('info_important', true);
     }
 }

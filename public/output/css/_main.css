@@ -5572,6 +5572,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
 
+.alert.alert-important {
+  padding: 25px;
+  position: relative; }
+
 ::-moz-selection {
   background: #FFF498; }
 
@@ -5693,6 +5697,19 @@ input[type="button"] {
     background-color: #DE3634;
     border: none;
     color: #fff; }
+  .button.button-close,
+  button.button-close,
+  input[type="submit"].button-close,
+  input[type="reset"].button-close,
+  input[type="button"].button-close {
+    float: right;
+    border: none;
+    color: #111;
+    position: absolute;
+    top: 1em;
+    right: 0.6em;
+    padding: 0;
+    font-size: 1.2em; }
 
 img.bgimg {
   /* Set rules to fill background */
