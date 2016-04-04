@@ -32,6 +32,7 @@ elixir(function(mix) {
     mix.scripts([
     	// origen resources/assets/js
     	'jquery.js',
+    	'bootstrap.js',
     	'functions.js'
     ], 'public/output/js/all.js');
 
