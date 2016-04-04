@@ -5651,7 +5651,7 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
-.button,
+.button, .cta1, .button-close,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -5673,7 +5673,7 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box; }
-  .button:hover, .button:active, .button:focus,
+  .button:hover, .cta1:hover, .button-close:hover, .button:active, .cta1:active, .button-close:active, .button:focus, .cta1:focus, .button-close:focus,
   button:hover,
   button:active,
   button:focus,
@@ -5689,27 +5689,25 @@ input[type="button"] {
     color: #333;
     border-color: #888;
     outline: 0; }
-  .button.cta1,
-  button.cta1,
-  input[type="submit"].cta1,
-  input[type="reset"].cta1,
-  input[type="button"].cta1 {
-    background-color: #DE3634;
-    border: none;
+
+.cta1 {
+  background-color: #DE3634;
+  border: none;
+  color: #fff; }
+  .cta1:hover, .cta1:active {
+    background-color: #FF4136; }
+  .cta1:active {
     color: #fff; }
-  .button.button-close,
-  button.button-close,
-  input[type="submit"].button-close,
-  input[type="reset"].button-close,
-  input[type="button"].button-close {
-    float: right;
-    border: none;
-    color: #111;
-    position: absolute;
-    top: 1em;
-    right: 0.6em;
-    padding: 0;
-    font-size: 1.2em; }
+
+.button-close {
+  float: right;
+  border: none;
+  color: #111;
+  position: absolute;
+  top: 1em;
+  right: 0.6em;
+  padding: 0;
+  font-size: 1.2em; }
 
 img.bgimg {
   /* Set rules to fill background */

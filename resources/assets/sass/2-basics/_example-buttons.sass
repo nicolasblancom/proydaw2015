@@ -28,17 +28,28 @@ input[type="button"]
     border-color: #888
     outline: 0
 
-  &.cta1
-    background-color: $redDark
-    border: none
+.cta1
+  @extend .button
+
+  background-color: $redDark
+  border: none
+  color: $white
+
+  &:hover,
+  &:active
+    background-color: $red
+
+  &:active
     color: $white
 
-  &.button-close
-    float: right
-    border: none
-    color: $black
-    position: absolute
-    top: 1em
-    right: 0.6em
-    padding: 0
-    font-size: 1.2em
+.button-close
+  @extend .button
+
+  float: right
+  border: none
+  color: $black
+  position: absolute
+  top: 1em
+  right: 0.6em
+  padding: 0
+  font-size: 1.2em

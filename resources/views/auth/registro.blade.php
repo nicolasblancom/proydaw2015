@@ -3,7 +3,7 @@
 @section('content')
 <h3>Registro</h3>
 <div class="row">
-	<div class="cl-lg-6">
+	<div class="col-lg-6">
 		<form action="{{ route('auth.registro') }}" class="control-label" role="form" method="post">
 			<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 				<label for="email" class="control-label">Tu email</label>
@@ -27,7 +27,7 @@
 				@endif
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-default">Regístrate</button>
+				<button type="submit" class="button cta1">Regístrate</button>
 			</div>
 			<input type="hidden" name="_token" value="{{ Session::token() }}">
 		</form>
