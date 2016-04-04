@@ -5567,7 +5567,7 @@ body {
   background-color: white;
   font-size: 14px;
   line-height: 1.6;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Arial', sans-serif;
   color: #666;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; }
@@ -5685,6 +5685,36 @@ input[type="button"] {
     color: #333;
     border-color: #888;
     outline: 0; }
+  .button.cta1,
+  button.cta1,
+  input[type="submit"].cta1,
+  input[type="reset"].cta1,
+  input[type="button"].cta1 {
+    background-color: #DE3634;
+    border: none;
+    color: #fff; }
+
+img.bgimg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Visual */
+  z-index: -1;
+  opacity: 0.3; }
+  @media screen and (max-width: 1024px) {
+    img.bgimg {
+      left: 50%;
+      margin-left: -512px; } }
+
+ol.list-inside li, ul.lis-inside li {
+  list-style-position: inside; }
 
 .name-lockup {
   display: -webkit-inline-flex;
