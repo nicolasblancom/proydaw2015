@@ -10,7 +10,7 @@
 						<span class="help-block">{{ $errors->first('estado') }}</span>
 					@endif
 				</div>
-				<button type="submit" class="button cta2">Actualizar estado</button>
+				<button type="submit" class="button button__cta2">Actualizar estado</button>
 				<input type="hidden" name="_token" value="{{ Session::token() }}">
 			</form>
 			<hr/>
@@ -90,7 +90,7 @@
 									@endif
 								</div>
 								<input type="hidden" name="_token" value="{{ Session::token() }}">
-								<button type="submit" class="button cta2">Responder</button>
+								<button type="submit" class="button button__cta2">Responder</button>
 							</form>
 						</div>
 					</div>

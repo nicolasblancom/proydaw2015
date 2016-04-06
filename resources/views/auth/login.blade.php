@@ -22,7 +22,7 @@
 				<label><input type="checkbox" name="remember">Recuérdame</label>
 			</div>-->
 			<div class="form-group">
-				<button type="submit" class="button cta1">Login</button>
+				<button type="submit" class="button button__cta1">Login</button>
 			</div>
 			<input type="hidden" name="_token" value="{{ Session::token() }}">
 		</form>

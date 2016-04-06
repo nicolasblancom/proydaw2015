@@ -12,7 +12,7 @@
 			<li>Retoma el contacto y queda con ellos!</li>
 		</ol>
 		<p class="text-center">
-			<a href="{{ route('auth.registro') }}" class="button cta1 big">Regístrate ahora!</a>
+			<a href="{{ route('auth.registro') }}" class="button button__cta1">Regístrate ahora!</a>
 		</p>
 	</div>
 @stop

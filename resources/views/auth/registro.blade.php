@@ -27,7 +27,7 @@
 				@endif
 			</div>
 			<div class="form-group">
-				<button type="submit" class="button cta1">Regístrate</button>
+				<button type="submit" class="button button__cta1">Regístrate</button>
 			</div>
 			<input type="hidden" name="_token" value="{{ Session::token() }}">
 		</form>
