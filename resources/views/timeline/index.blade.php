@@ -34,7 +34,7 @@
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<a href="{{ route('profile.index', ['username' => $estado->usuario->username]) }}">
+								<a href="{{ route('profile.index', ['username' => $estado->usuario->username]) }}" class="profileUsername">
 									{{ $estado->usuario->getNombreCompletoOUsername() }}
 								</a>
 							</h4>

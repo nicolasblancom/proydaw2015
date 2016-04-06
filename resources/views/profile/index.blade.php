@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-lg-5">
 			<!-- Info usuario y estados -->
+			<h4><em>Perfil de</em></h4>
 			@include('user.partials._userblock')
 			<hr>
 
@@ -23,7 +24,7 @@
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<a href="{{ route('profile.index', ['username' => $estado->usuario->username]) }}">
+								<a href="{{ route('profile.index', ['username' => $estado->usuario->username]) }}" class="profileUsername">
 									{{ $estado->usuario->getNombreCompletoOUsername() }}
 								</a>
 							</h4>
@@ -50,7 +51,7 @@
 								</a>
 								<div class="media-body">
 									<h5 class="media-heading">
-										<a href="{{ route('profile.index', ['username' => $respuesta->usuario->username]) }}">
+										<a href="{{ route('profile.index', ['username' => $respuesta->usuario->username]) }}" class="profileUsername">
 											{{ $respuesta->usuario->getNombreCompletoOUsername() }}
 										</a>
 									</h5>
@@ -93,7 +94,7 @@
 				<p>{{ $user->getNombreOUsername() }} aún no ha aceptado tu solicitud...</p>
 			@elseif(Auth::user()->tieneAmigoSolicitudRecibida($user))
 			<!-- Boton para aceptar solicitudes pendientes -->
-				<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="btn btn-primary">Aceptar amistad</a>
+				<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="button button__cta2">Aceptar amistad</a>
 			@elseif(Auth::user()->esAmigoDe($user))
 			<!-- Mensaje de relacion de amistad y boton de eliminar amistad -->
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>

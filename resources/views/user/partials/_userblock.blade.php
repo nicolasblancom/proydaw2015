@@ -4,7 +4,7 @@
 	</a>
 	<div class="media-body">
 		<h4 class="media-heading">
-			<a href="{{ route('profile.index', ['username' => $user->username]) }}">
+			<a href="{{ route('profile.index', ['username' => $user->username]) }}" class="profileUsername profileUsername__highlight">
 				{{ $user->getNombreCompletoOUsername() }}
 			</a>
 		</h4>

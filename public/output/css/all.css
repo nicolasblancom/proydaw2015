@@ -5838,4 +5838,14 @@ ol.list-inside li, ul.lis-inside li {
   color: #DE3634;
   font-family: 'Sansita One'; }
 
+.profileUsername {
+  color: #444; }
+  .profileUsername:focus, .profileUsername:hover {
+    color: #777777; }
+
+.profileUsername__highlight {
+  color: #DE3634; }
+  .profileUsername__highlight:focus, .profileUsername__highlight:hover {
+    color: #c64d4c; }
+
 /*# sourceMappingURL=all.css.map */
