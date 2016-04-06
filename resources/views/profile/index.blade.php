@@ -79,7 +79,7 @@
 										@endif
 									</div>
 									<input type="hidden" name="_token" value="{{ Session::token() }}">
-									<input type="submit" value="Responder" class="btn btn-default btn-sm">
+									<button type="submit" class="button cta2">Responder</button>
 								</form>
 							@endif
 						</div>
@@ -99,13 +99,13 @@
 				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
 
 				<form action="{{ route('friends.delete', ['username' => $user->username]) }}" method="POST">
-					<input type="submit" value="Eliminar amistad" class="btn btn-primary">
+					<button type="submit" class="button cta1">Eliminar amistad</button>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				</form>
 
 			@elseif(Auth::user()->id !== $user->id)
 			<!-- Boton para solicitar amistad -->
-				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="btn btn-primary">Solicitar amistad</a>
+				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="button cta3">Solicitar amistad</a>
 			@endif
 
 			<h4>Amigos de {{ $user->getNombreOUsername() }}</h4>

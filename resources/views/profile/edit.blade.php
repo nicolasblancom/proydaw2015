@@ -33,7 +33,7 @@
 					@endif
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-default">Actualizar</button>
+					<button type="submit" class="button cta2">Actualizar</button>
 				</div>
 				<input type="hidden" name="_token" value="{{ Session::token() }}">
 			</form>

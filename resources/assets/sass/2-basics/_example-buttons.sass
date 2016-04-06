@@ -4,7 +4,6 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"]
   display: inline-block
-  height: 38px
   padding: 0 30px
   color: #555
   text-align: center
@@ -39,6 +38,28 @@ input[type="button"]
   &:active
     background-color: $red
 
+  &:active
+    color: $white
+
+.cta2
+  @extend .button
+  background-color: $tealLight
+  border: none
+  color: $white
+  &:hover,
+  &:active
+    background-color: lighten($tealLight, 10%)
+  &:active
+    color: $white
+
+.cta3
+  @extend .button
+  background-color: $olive
+  border: none
+  color: $white
+  &:hover,
+  &:active
+    background-color: lighten($olive, 10%)
   &:active
     color: $white
 

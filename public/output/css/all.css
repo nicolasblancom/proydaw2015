@@ -5651,13 +5651,12 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
-.button, .cta1, .button-close,
+.button, .cta1, .cta2, .cta3, .button-close,
 button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
   display: inline-block;
-  height: 38px;
   padding: 0 30px;
   color: #555;
   text-align: center;
@@ -5673,7 +5672,7 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box; }
-  .button:hover, .cta1:hover, .button-close:hover, .button:active, .cta1:active, .button-close:active, .button:focus, .cta1:focus, .button-close:focus,
+  .button:hover, .cta1:hover, .cta2:hover, .cta3:hover, .button-close:hover, .button:active, .cta1:active, .cta2:active, .cta3:active, .button-close:active, .button:focus, .cta1:focus, .cta2:focus, .cta3:focus, .button-close:focus,
   button:hover,
   button:active,
   button:focus,
@@ -5697,6 +5696,24 @@ input[type="button"] {
   .cta1:hover, .cta1:active {
     background-color: #FF4136; }
   .cta1:active {
+    color: #fff; }
+
+.cta2 {
+  background-color: #5EB1B1;
+  border: none;
+  color: #fff; }
+  .cta2:hover, .cta2:active {
+    background-color: #80c2c2; }
+  .cta2:active {
+    color: #fff; }
+
+.cta3 {
+  background-color: #3D9970;
+  border: none;
+  color: #fff; }
+  .cta3:hover, .cta3:active {
+    background-color: #50b98a; }
+  .cta3:active {
     color: #fff; }
 
 .button-close {
@@ -5820,7 +5837,5 @@ ol.list-inside li, ul.lis-inside li {
 .navbar-default .navbar-brand {
   color: #DE3634;
   font-family: 'Sansita One'; }
-
-/*# sourceMappingURL=_main.css.map */
 
 /*# sourceMappingURL=all.css.map */
