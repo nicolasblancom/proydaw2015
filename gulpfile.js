@@ -21,12 +21,12 @@ elixir(function(mix) {
 	// SASS
     mix.sass([
     	'main.sass'
-    ], 'public/output/css/_main.css');
+    ], 'public/output/css/all.css');
 
     // CSS
-    mix.styles([
+    /*mix.styles([
     	'_main.css'
-    ], 'public/output/css/all.css', 'public/output/css');
+    ], 'public/output/css/all.css', 'public/output/css');*/
 
     // JS
     mix.scripts([
