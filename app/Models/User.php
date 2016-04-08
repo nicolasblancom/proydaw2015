@@ -79,7 +79,7 @@ class User extends Authenticatable
     public function getAvatarUrl()
     {
         $hash = md5($this->email);
-        return "http://www.gravatar.com/avatar/$hash?d=mm&s=45";
+        return "http://www.gravatar.com/avatar/$hash?d=mm&s=55";
     }
 
     /**
