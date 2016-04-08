@@ -5848,4 +5848,20 @@ ol.list-inside li, ul.lis-inside li {
   .profileUsername__highlight:focus, .profileUsername__highlight:hover {
     color: #c64d4c; }
 
+.userblock {
+  background: #fff;
+  border: 1px solid #D8D8D8;
+  padding: 25px;
+  box-shadow: 0px 0px 4px 2px #EFE9E9; }
+  .userblock .media-heading {
+    margin: 0; }
+  .userblock p {
+    margin: 0; }
+  .userblock__tit {
+    margin-top: 0px; }
+
+.amistad__estado {
+  text-align: center;
+  border: 1px solid #aaa; }
+
 /*# sourceMappingURL=all.css.map */

@@ -2,11 +2,12 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-lg-5">
+		<div class="col-lg-6">
 			<!-- Info usuario y estados -->
-			<h4><em>Perfil de</em></h4>
-			@include('user.partials._userblock')
-			<hr>
+			<div class="userblock">
+				<h4 class="userblock__tit"><em>Perfil de</em></h4>
+				@include('user.partials._userblock')
+			</div>
 
 			<!-- Timeline del propio usuario: sacar en partial -->
 			@if(!$estados->count())
@@ -88,26 +89,28 @@
 				@endforeach
 			@endif
 		</div>
-		<div class="col-lg-4 col-lg-offset-3">
-			<!-- Solicitudes que ha enviado y aun sin aceptar -->
-			@if(Auth::user()->tieneAmigoSolicitudPendiente($user))
-				<p>{{ $user->getNombreOUsername() }} aún no ha aceptado tu solicitud...</p>
-			@elseif(Auth::user()->tieneAmigoSolicitudRecibida($user))
-			<!-- Boton para aceptar solicitudes pendientes -->
-				<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="button button__cta2">Aceptar amistad</a>
-			@elseif(Auth::user()->esAmigoDe($user))
-			<!-- Mensaje de relacion de amistad y boton de eliminar amistad -->
-				<p>Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
+		<div class="col-lg-4 col-lg-offset-2">
+			<div class="amistad">
+				<!-- Solicitudes que ha enviado y aun sin aceptar -->
+				@if(Auth::user()->tieneAmigoSolicitudPendiente($user))
+					<p class="amistad__estado">{{ $user->getNombreOUsername() }} aún no ha aceptado tu solicitud...</p>
+				@elseif(Auth::user()->tieneAmigoSolicitudRecibida($user))
+				<!-- Boton para aceptar solicitudes pendientes -->
+					<a href="{{ route('friends.accept', ['username' => $user->username]) }}" class="button button__cta2">Aceptar amistad</a>
+				@elseif(Auth::user()->esAmigoDe($user))
+				<!-- Mensaje de relacion de amistad y boton de eliminar amistad -->
+					<p class="amistad__estado">Tú y {{ $user->getNombreOUsername() }} sois amigos</p>
 
-				<form action="{{ route('friends.delete', ['username' => $user->username]) }}" method="POST">
-					<button type="submit" class="button button__cta1">Eliminar amistad</button>
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				</form>
+					<form action="{{ route('friends.delete', ['username' => $user->username]) }}" method="POST">
+						<button type="submit" class="button button__cta1">Eliminar amistad</button>
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					</form>
 
-			@elseif(Auth::user()->id !== $user->id)
-			<!-- Boton para solicitar amistad -->
-				<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="button button__cta3">Solicitar amistad</a>
-			@endif
+				@elseif(Auth::user()->id !== $user->id)
+				<!-- Boton para solicitar amistad -->
+					<a href="{{ route('friends.add', ['username' => $user->username]) }}" class="button button__cta3">Solicitar amistad</a>
+				@endif
+			</div>
 
 			<h4>Amigos de {{ $user->getNombreOUsername() }}</h4>
 			@if(!$user->amigos()->count())
