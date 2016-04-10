@@ -4,6 +4,7 @@ namespace Socialdaw\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Socialdaw\Models\User;
 
 class FriendController extends Controller
@@ -130,5 +131,41 @@ class FriendController extends Controller
         return redirect()->back()
             ->with('info', 'Amistad eliminada.')
             ->with('info_important', true);
+    }
+
+    /**
+     * Consultar numero de solicitudes pendientes desde ajax.
+     *
+     * @param  Request $request
+     * @return json array {error[,solicitudes]}
+     */
+    public function postSolictudesPend(Request $request)
+    {
+        // Obtener datos pasados
+        $data = $request->all();
+        $response['error'] = 0;
+
+        // No solicita datos
+        if(! isset($data['username'])){
+            // return redirect()
+            //    ->route('friends.index');
+            $response['error'] = 1;
+            return Response::json( $response );
+        }
+
+        // Solicita datos de otro usuario
+        if(Auth::user()->username !== $data['username']){
+            // return redirect()
+            //    ->route('friends.index');
+            $response['error'] = 1;
+            return Response::json( $response );
+        }
+
+        // Obtener solicitudes de amistad del usuario
+        $requests = Auth::user()->amigosSolicitudes();
+
+        // Construir respuesta
+        $response['solicitudes'] = $requests->count();
+        return Response::json( $response );
     }
 }

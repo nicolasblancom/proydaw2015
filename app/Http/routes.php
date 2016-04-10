@@ -136,6 +136,13 @@ Route::group(['middleware' => ['web']], function () {
 		'middleware' => ['auth'],
 	]);
 
+	// Consultar el numero de solicitudes de amistad del usuario
+	Route::get('amigos/solicitudes/',[
+		'uses' => '\Socialdaw\Http\Controllers\FriendController@postSolictudesPend',
+		'as' => 'friends.solicitudesPend',
+		'middleware' => ['auth'],
+	]);
+
 	/*
 	| Estados
 	*/

@@ -5651,6 +5651,12 @@ hr {
   margin: 10px 0 30px;
   height: 0; }
 
+.highlight {
+  color: #fff;
+  background-color: #444;
+  padding: 5px;
+  font-weight: bold; }
+
 .button, .button__cta1, .button__cta2, .button__cta3, .button__xclose,
 button,
 input[type="submit"],
