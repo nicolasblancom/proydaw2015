@@ -159,4 +159,11 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'status.like',
 		'middleware' => ['auth'],
 	]);
+
+	// Quitar like a un estado
+	Route::get('/estado/{estadoId}/deleteLike', [
+		'uses' => '\Socialdaw\Http\Controllers\StatusController@deleteLike',
+		'as' => 'status.deleteLike',
+		'middleware' => ['auth'],
+	]);
 });

@@ -43,7 +43,7 @@
 								<li>{{ $estado->created_at->diffForHumans() }}</li>
 								@if($estado->usuario->id !== Auth::user()->id)
 									@if(Auth::user()->dioLikeEstado($estado))
-										<li><a href="#">Ya no me gusta</a></li>
+										<li><a href="{{ route('status.deleteLike', ['estadoId' => $estado->id]) }}">Ya no me gusta</a></li>
 									@else
 										<li><a href="{{ route('status.like', ['estadoId' => $estado->id]) }}">Like</a></li>
 									@endif
@@ -70,7 +70,7 @@
 										<li>{{ $respuesta->created_at->diffForHumans() }}</li>
 										@if($respuesta->usuario->id !== Auth::user()->id)
 											@if(Auth::user()->dioLikeEstado($respuesta))
-												<li><a href="#">Ya no me gusta</a></li>
+												<li><a href="{{ route('status.deleteLike', ['estadoId' => $estado->id]) }}">Ya no me gusta</a></li>
 											@else
 												<li><a href="{{ route('status.like', ['estadoId' => $respuesta->id]) }}">Like</a></li>
 											@endif

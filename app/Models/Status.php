@@ -3,6 +3,7 @@
 namespace Socialdaw\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Status extends Model
 {
@@ -50,6 +51,17 @@ class Status extends Model
 	public function likes()
 	{
 		return $this->morphMany('Socialdaw\Models\Like', 'gustable');
+	}
+
+	/**
+	 * Borra el like dado a un estado.
+	 *
+	 * @param  Status $estado El estado que tiene el like a borrr
+	 * @return void
+	 */
+	public function deleteLike(Status $estado)
+	{
+		$estado->likes()->where('gustable_id', '=', $estado->id)->delete();
 	}
 
 	/**

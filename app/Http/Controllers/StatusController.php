@@ -102,4 +102,28 @@ class StatusController extends Controller
 
 		return redirect()->back();
 	}
+
+	/**
+	 * Borra un like dado a un estado.
+	 *
+	 * @param  int $estadoId Id del estado a borrar el like
+	 * @return redirect
+	 */
+	public function deleteLike($estadoId)
+	{
+		$estado = Status::find($estadoId);
+
+		if (!$estado) {
+			return redirect()->route('home');
+		}
+
+		// Si no le dio me gusta a ese estado
+		if (!Auth::user()->dioLikeEstado($estado)) {
+			return redirect()->back();
+		}
+
+		$estado->deleteLike($estado);
+
+		return redirect()->back();
+	}
 }
