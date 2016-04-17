@@ -3,32 +3,32 @@
 @section('content')
 	<script>
 		$(document).ready(function(){
-			function revisarSolicitudes(){
-				setInterval(function(){
-					$.get(
-					'{{ route("friends.solicitudesPend") }}',
-					{
-						'username' : 'nicolasblancom'
-					},
-					function(data){
-						var solicitudesAntiguas = $("input[name='solicitudesNum']").val();
-						var solicitudesNuevas = data.solicitudes;
-						var mostrar = $("#solicitudesInfo");
-
-						if (solicitudesNuevas > solicitudesAntiguas) {
-							mostrar.addClass('highlight').html('Tienes solicitudes de amistad sin ver! <a href="{{ route('friends.index') }}">Recarga la página para verlas</a>');
-							mostrar.parent().show();
-						}else{
-							mostrar.html('No tienes nuevas solicitudes de amistad');
-							mostrar.removeClass('highlight');
-						};
-					},
-					'json'
-				);
-				},2000);
-			}
-
+			revisarSolicitudes();
 		});
+		function revisarSolicitudes(){
+			setInterval(function(){
+				$.get(
+				'{{ route("friends.solicitudesPend") }}',
+				{
+					'username' : '{{ Auth::user()->username }}'
+				},
+				function(data){
+					var solicitudesAntiguas = $("input[name='solicitudesNum']").val();
+					var solicitudesNuevas = data.solicitudes;
+					var mostrar = $("#solicitudesInfo");
+
+					if (solicitudesNuevas > solicitudesAntiguas) {
+						mostrar.addClass('highlight').html('Tienes solicitudes de amistad sin ver! <a href="{{ route('friends.index') }}">Recarga la página para verlas</a>');
+						mostrar.parent().show();
+					}else{
+						mostrar.html('No tienes nuevas solicitudes de amistad');
+						mostrar.removeClass('highlight');
+					};
+				},
+				'json'
+			);
+			},2000);
+		}
 	</script>
 	<div class="row">
 		<div class="col-lg-6">
