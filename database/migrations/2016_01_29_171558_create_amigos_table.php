@@ -16,7 +16,7 @@ class CreateAmigosTable extends Migration
             $table->increments('id');
             $table->integer('usuario_id')->unsigned();
             $table->integer('amigo_id')->unsigned();
-            $table->boolean('aceptado');
+            $table->boolean('aceptado')->default(0);
             $table->timestamps();
 
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
