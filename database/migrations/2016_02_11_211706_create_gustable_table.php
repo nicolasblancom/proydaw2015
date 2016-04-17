@@ -16,7 +16,7 @@ class CreateGustableTable extends Migration
         // gustable_id: CP de la tabla correspondiente al modelo
         Schema::create('gustable', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id');
+            $table->integer('usuario_id')->nullable();
             $table->integer('gustable_id');
             $table->string('gustable_type');
             $table->timestamps();
